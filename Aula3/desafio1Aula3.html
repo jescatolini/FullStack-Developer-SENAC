@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+
+    <script>
+
+        /************DESAFIO*************
+Faça um algoritmo que informe para o cliente de uma 
+loja de pisos, quantos metros de pisos serão necessários 
+comprar para conseguir atender todo o ambiente.
+
+calcule a o valor cheio que será pago pelo usuário
+de acordo com a quantidade de metros quadrados e o valor do metro do piso
+
+Caso o cliente deseje prosseguir com a compra, é necessário que
+ele escolha a forma de pagamento:
+1. A vista em dinheiro, com 10% de desconto
+3. Cartão:
+    3.1 . Débito - 5% de desconto
+    3.2 . crédito a vista - acréscimo de 1%
+    3.3 - parcelado, acréscimo de 2%
+
+Mostre para o cliente:
+a quantidade de metros quadrados
+o valor do metro do piso
+o valor total cheio
+o valor total com desconto, caso se aplique
+o valor total com acréscimo, caso se aplique
+o valor de cada parcela, caso se aplique
+
+pergunte se deseja fazer outra consulta e então refaça todo 
+o procedimento acima
+
+*/
+
+do {
+    let largura = parseFloat(prompt("Informe a largura do ambiente em metros:"));
+    let comprimento = parseFloat(prompt("Informe o comprimento do ambiente em metros:"));
+    let valorPiso = parseFloat(prompt("Informe o valor do metro do piso:"));
+    
+    let valorMetro = largura * comprimento;
+    let valorCheio = valorMetro * valorPiso;
+
+    let pag = parseInt(prompt("Digite entre 1 a 4 para forma de pagamento:\n1 - A vista em dinheiro (10% de desconto)\n2 - Cartão débito (5% de desconto)\n3 - Cartão crédito a vista (acréscimo de 1%)\n4 - Cartão parcelado (acréscimo de 2%)"));
+
+    switch (pag) {
+        case 1:
+            valorCheio *= 0.9;
+            alert("O valor total com 10% de desconto para pagamento à vista em dinheiro é R$ " + valorCheio.toFixed(2));
+            break;
+        case 2:
+            valorCheio *= 0.95;
+            alert("O valor total com 5% de desconto para pagamento à vista no débito é R$ " + valorCheio.toFixed(2));
+            break;
+        case 3:
+            valorCheio *= 1.01;
+            alert("O valor total com 1% de acréscimo para pagamento à vista no crédito é R$ " + valorCheio.toFixed(2));
+            break;
+        case 4:
+            let numParcelas = parseInt(prompt("Informe o número de parcelas:"));
+            valorCheio *= 1.02;
+            let valorParcela = valorCheio / numParcelas;
+            alert("O valor total do m² para o ambiente é R$ "+ valorCheio.toFixed(2) +", parcelando em " + numParcelas +"x de R$ "+ valorParcela.toFixed(2));
+            break;
+        default:
+            alert("Opção inválida");
+            break;
+    }
+    
+} while (confirm("Deseja fazer uma nova consulta?"));
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
