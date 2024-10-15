@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    /*2. Construir um programa no qual ele escreverá, na tela, todos os valores de um vetor com cinco 
+elementos numéricos. O usuário deste programa escolherá um desses elementos e deverá trocar 
+o valor por um outro número digitado. 
+Exemplo:
+Valores do vetor 9, 3, 2, 6, 8.
+Qual posição do vetor você quer alterar? <<Usuário digita um número, exemplo 0 >>.
+Qual número você quer inserir? <<Usuário digita o valor, exemplo 5>>.
+O vetor agora é composto por 5, 3, 2, 6, 8.*/
+
+    let numeros = [9, 3, 2, 6, 8];
+
+    function alterarVetor(vetor, posicao, novoValor) {
+      if (posicao >= 0 && posicao < vetor.length) {
+        vetor[posicao] = novoValor;
+        return vetor;
+      } else {
+        return "Posição inválida!";
+      }
+    }
+
+    document.write("Valores atuais do vetor: " + numeros + "<br>");
+
+    let posicao = parseInt(prompt("Qual posição do vetor você quer alterar? (0 a 4):"));
+    let novoValor = parseFloat(prompt("Qual número você quer inserir?"));
+
+    let vetorAtualizado = alterarVetor(numeros, posicao, novoValor);
+
+    if (typeof vetorAtualizado === "string") {
+      document.write(vetorAtualizado + "<br>"); // Mensagem de erro se a posição for inválida
+    } else {
+      document.write("O vetor atualizado é: " + vetorAtualizado + "<br>");
+    }
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
