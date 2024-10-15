@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Comissão</title>
+    <script>
+            var vendas = parseFloat(prompt("Digite o total de vendas do mês (em R$):"));
+
+            var comissao;
+
+            if (vendas >= 100000) {
+                comissao = vendas * 0.04;  
+            } else {
+                comissao = vendas * 0.02;  
+            }
+
+            document.write("A comissão do vendedor será de: R$ " + comissao.toFixed(2));
+    </script>
+
+</head>
+<body>
+</body>
+</html>

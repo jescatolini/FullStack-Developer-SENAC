@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de Conceito de Estudante</title>
+    <script>
+            var nota = parseFloat(prompt("Digite a nota do aluno (entre 0 e 10):"));
+
+            if (nota < 0 || nota > 10) {
+                document.write("Nota Inválida");
+            } else if (nota >= 0 && nota < 4) {
+                document.write("Aluno Reprovado");
+            } else if (nota >= 4 && nota < 7) {
+                document.write("Aluno em Recuperação");
+            } else if (nota >= 7 && nota <= 10) {
+                document.write("Aluno Aprovado");
+            }
+    </script>
+</head>
+<body>
+</body>
+</html>

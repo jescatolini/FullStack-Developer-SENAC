@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Compra de Maçãs</title>
+    <script>
+            var quantidade = parseInt(prompt("Digite o número de maçãs compradas:"));
+
+            var valorTotal;
+
+
+            if (quantidade < 12) {
+                valorTotal = quantidade * 0.30;
+            } else {
+                valorTotal = quantidade * 0.25; 
+            }
+
+            document.write("O valor total da compra é: R$ " + valorTotal.toFixed(2));
+    </script>
+</head>
+<body>
+</body>
+</html>
