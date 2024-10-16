@@ -30,4 +30,4 @@ The objective of this repository is to document the progress and activities comp
 
 ---
 
-Made with dedication to continuous learning during the **FullStack Developer** course at Senac.
+Made with dedication to continuous learning during the **FullStack Developer** course at Senac. 
