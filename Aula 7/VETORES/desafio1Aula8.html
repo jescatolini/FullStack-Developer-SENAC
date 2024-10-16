@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*1. Refazer o exercício (acima), só que o usuário do programa deverá digitar três números e o 
+    programa terá que dizer qual é cso maior e qual é o menor. COM VETORES*/
+        let num = [];
+
+        function maiorEMenor() {
+            for (var i = 0; i < 3; i++) {
+                num[i] = parseFloat(prompt("Digite o " + (i + 1) + " número:"));
+            }
+            let maior = Math.max(num[0], num[1], num[2]);
+            let menor = Math.min(num[0], num[1], num[2]);
+            return "O maior número é " + maior + " e o menor número é " + menor;
+        }
+
+        document.write(maiorEMenor());
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
