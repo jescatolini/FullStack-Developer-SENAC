@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    var matriz = [[3], [3], [3]];
+
+
+    for (var linha = 0; linha < 3; linha++) {
+      for (var coluna = 0; coluna < 3; coluna++) {
+        matriz[linha][coluna] = parseInt(prompt("Informe um valor para a posição [" + linha + "][" + coluna + "]"));
+      }
+    }
+
+
+    var linhaEscolhida = parseInt(prompt("Informe a linha que deseja visualizar (0, 1 ou 2):"));
+
+
+    if (linhaEscolhida >= 0 && linhaEscolhida < 3) {
+      document.write("Valores da linha " + linhaEscolhida + ": ");
+      for (var coluna = 0; coluna < 3; coluna++) {
+        document.write(matriz[linhaEscolhida][coluna] + " ");
+      }
+    } else {
+      document.write("Linha inválida.");
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
