@@ -7,111 +7,164 @@
   <title>Document</title>
 
   <script>
-    var votosSecao = 10;
-    var senhaReal = "321", senhaFalsa = "123";
-    var contNulo = 0, falta = 0, qtdVotos = 0;
 
-    // Matrizes para armazenar os dados dos votos reais e falsos
-    var votosReal = { "Zé": 0, "Ana": 0, "Nulo": 0, "Branco": 0 };
-    var votosFalsa = { "Zé": 0, "Ana": 0, "Nulo": 0, "Branco": 0 };
+   var votosSecao = 10;
+var senhaReal = "321", senhaFalsa = "123";
+var contNuloPrefeito = 0, contNuloVereador = 0, falta = 0, qtdVotos = 0;
 
-    // Lista de eleitores e votos registrados
-    var listaDeEleitores = [];
-    var prefeitoVotado = [];
-    var impressao = [];
-    var impressaoFalsa = [];
+// Matrizes para armazenar os votos reais e falsos
+var votosPrefeitoReal = { "Zé": 0, "Ana": 0, "Nulo": 0, "Branco": 0 };
+var votosPrefeitoFalsa = { "Zé": 0, "Ana": 0, "Nulo": 0, "Branco": 0 };
+var votosVereadorReal = { "Paula": 0, "Marcos": 0, "Nulo": 0, "Branco": 0 };
+var votosVereadorFalsa = { "Paula": 0, "Marcos": 0, "Nulo": 0, "Branco": 0 };
 
-    function voto() {
-      let eleitor = parseInt(prompt("Digite o título: "));
-      let opcaoVoto = prompt("Qual seu voto para prefeito (11 para Zé, 12 para Ana, 00 para Nulo, B para Branco): ");
+// Lista de eleitores e votos registrados
+var listaDeEleitores = [];
+var prefeitoVotado = [];
+var vereadorVotado = [];
+var impressao = [];
+var impressaoFalsa = [];
 
-      switch (opcaoVoto) {
+function voto() {
+    let eleitor = parseInt(prompt("Digite o título: "));
+
+    // Votação para prefeito
+    let opcaoPrefeito = prompt("Qual seu voto para prefeito (11 para Zé, 12 para Ana, 00 para Nulo, B para Branco): ");
+    registrarVotoPrefeito(eleitor, opcaoPrefeito);
+
+    // Votação para vereador
+    let opcaoVereador = prompt("Qual seu voto para vereador (11300 para Paula, 12100 para Marcos, 00 para Nulo, B para Branco): ");
+    registrarVotoVereador(eleitor, opcaoVereador);
+}
+
+function registrarVotoPrefeito(eleitor, opcaoVoto) {
+    switch (opcaoVoto) {
         case "11":
-          registrarVoto(eleitor, "Zé", votosReal, votosFalsa);
-          break;
+            registrarVoto(eleitor, "Zé", votosPrefeitoReal, votosPrefeitoFalsa, "Prefeito");
+            break;
         case "12":
-          registrarVoto(eleitor, "Ana", votosReal, votosFalsa);
-          break;
+            registrarVoto(eleitor, "Ana", votosPrefeitoReal, votosPrefeitoFalsa, "Prefeito");
+            break;
         case "00":
-          votoNulo(eleitor);
-          break;
+            votoNuloPrefeito(eleitor);
+            break;
         case "b":
         case "B":
-          registrarVoto(eleitor, "Branco", votosReal, votosFalsa);
-          break;
+            registrarVoto(eleitor, "Branco", votosPrefeitoReal, votosPrefeitoFalsa, "Prefeito");
+            break;
         default:
-          alert("Opção inválida");
-      }
+            alert("Opção inválida para prefeito");
+    }
+}
+
+function registrarVotoVereador(eleitor, opcaoVoto) {
+    switch (opcaoVoto) {
+        case "11300":
+            registrarVoto(eleitor, "Paula", votosVereadorReal, votosVereadorFalsa, "Vereador");
+            break;
+        case "12100":
+            registrarVoto(eleitor, "Marcos", votosVereadorReal, votosVereadorFalsa, "Vereador");
+            break;
+        case "00":
+            votoNuloVereador(eleitor);
+            break;
+        case "b":
+        case "B":
+            registrarVoto(eleitor, "Branco", votosVereadorReal, votosVereadorFalsa, "Vereador");
+            break;
+        default:
+            alert("Opção inválida para vereador");
+    }
+}
+
+function registrarVoto(eleitor, candidato, votosReal, votosFalsa, tipo) {
+    listaDeEleitores.push(eleitor);
+    if (tipo === "Prefeito") {
+        prefeitoVotado.push(candidato);
+    } else if (tipo === "Vereador") {
+        vereadorVotado.push(candidato);
     }
 
-    function registrarVoto(eleitor, candidato, votosReal, votosFalsa) {
-      listaDeEleitores.push(eleitor);
-      prefeitoVotado.push(candidato);
+    votosReal[candidato] += 1;
+    votosFalsa[candidato] += 1;
+    
+    impressao.push(eleitor + " Votou em " + candidato + " para " + tipo + "<br>");
+    impressaoFalsa.push(eleitor + " Votou em " + candidato + " para " + tipo + "<br>");
+    qtdVotos += 1;
+}
 
-      votosReal[candidato] += 1;
-      votosFalsa[candidato] += 1;
-
-      impressao.push(eleitor + " Votou em " + candidato + "<br>");
-      impressaoFalsa.push(eleitor + " Votou em " + candidato + "<br>");
-      qtdVotos += 1;
-    }
-
-    function votoNulo(eleitor) {
-      if (contNulo == 4) {
+function votoNuloPrefeito(eleitor) {
+    if (contNuloPrefeito == 4) {
         listaDeEleitores.push(eleitor);
         prefeitoVotado.push("Zé");
-
-        votosFalsa["Zé"] += 1;
-        votosReal["Nulo"] += 1;
-
-        impressao.push(eleitor + " Votou Nulo<br>");
-        impressaoFalsa.push(eleitor + " Votou em Zé<br>");
-
+        
+        votosPrefeitoFalsa["Zé"] += 1;
+        votosPrefeitoReal["Nulo"] += 1;
+        
+        impressao.push(eleitor + " Votou Nulo para Prefeito<br>");
+        impressaoFalsa.push(eleitor + " Votou em Zé para Prefeito<br>");
+        
         qtdVotos += 1;
-        contNulo = 0;
-      } else {
+        contNuloPrefeito = 0;
+    } else {
+        registrarVoto(eleitor, "Nulo", votosPrefeitoReal, votosPrefeitoFalsa, "Prefeito");
+        contNuloPrefeito += 1;
+    }
+}
+
+function votoNuloVereador(eleitor) {
+    if (contNuloVereador == 4) {
         listaDeEleitores.push(eleitor);
-        prefeitoVotado.push("Nulo");
-
-        votosReal["Nulo"] += 1;
-        votosFalsa["Nulo"] += 1;
-
-        impressao.push(eleitor + " Votou Nulo<br>");
-        impressaoFalsa.push(eleitor + " Votou Nulo<br>");
-
+        vereadorVotado.push("Paula");
+        
+        votosVereadorFalsa["Paula"] += 1;
+        votosVereadorReal["Nulo"] += 1;
+        
+        impressao.push(eleitor + " Votou Nulo para Vereador<br>");
+        impressaoFalsa.push(eleitor + " Votou em Paula para Vereador<br>");
+        
         qtdVotos += 1;
-        contNulo += 1;
-      }
+        contNuloVereador = 0;
+    } else {
+        registrarVoto(eleitor, "Nulo", votosVereadorReal, votosVereadorFalsa, "Vereador");
+        contNuloVereador += 1;
     }
+}
 
-    for (let i = 0; i < votosSecao; i++) {
-      let comparecimento = parseInt(prompt("Eleitor " + (i + 1) + " compareceu? \n\n1. Sim\n2. Não"));
-      switch (comparecimento) {
+// Lógica para registrar a votação
+for (let i = 0; i < votosSecao; i++) {
+    let comparecimento = parseInt(prompt("Eleitor " + (i + 1) + " compareceu? \n\n1. Sim\n2. Não"));
+    switch (comparecimento) {
         case 1:
-          voto();
-          break;
+            voto();
+            break;
         case 2:
-          falta += 1;
-          impressao.push("Eleitor " + (i + 1) + " Faltou<br>");
-          impressaoFalsa.push("Eleitor " + (i + 1) + " Faltou<br>");
-          break;
-      }
+            falta += 1;
+            impressao.push("Eleitor " + (i + 1) + " Faltou<br>");
+            impressaoFalsa.push("Eleitor " + (i + 1) + " Faltou<br>");
+            break;
     }
+}
 
-    let senha = prompt("Digite a senha: ");
-    if (senha === senhaReal) {
-      document.write("Impressão Real:<br>");
-      document.write(impressao.join('') + "<br>");
-      document.write("Total de votos nulos: " + votosReal["Nulo"] + "<br>");
-      document.write("Eleitores faltantes: " + falta + "<br>");
-      document.write("Votos computados: " + qtdVotos + "<br>");
-    } else if (senha === senhaFalsa) {
-      document.write("Impressão Falsa:<br>");
-      document.write(impressaoFalsa.join('') + "<br>");
-      document.write("Votos falsos para Zé: " + votosFalsa["Zé"] + "<br>");
-      document.write("Eleitores faltantes: " + falta + "<br>");
-      document.write("Votos computados: " + qtdVotos + "<br>");
-    }
+// Exibição dos resultados conforme a senha
+let senha = prompt("Digite a senha: ");
+if (senha === senhaReal) {
+    document.write("Impressão Real:<br>");
+    document.write(impressao.join('') + "<br>");
+    document.write("Total de votos nulos para Prefeito: " + votosPrefeitoReal["Nulo"] + "<br>");
+    document.write("Total de votos nulos para Vereador: " + votosVereadorReal["Nulo"] + "<br>");
+    document.write("Eleitores faltantes: " + falta + "<br>");
+    document.write("Votos computados: " + qtdVotos + "<br>");
+} else if (senha === senhaFalsa) {
+    document.write("Impressão Falsa:<br>");
+    document.write(impressaoFalsa.join('') + "<br>");
+    document.write("Votos falsos para Zé (Prefeito): " + votosPrefeitoFalsa["Zé"] + "<br>");
+    document.write("Votos falsos para Paula (Vereador): " + votosVereadorFalsa["Paula"] + "<br>");
+    document.write("Eleitores faltantes: " + falta + "<br>");
+    document.write("Votos computados: " + qtdVotos + "<br>");
+}
+
+    
   </script>
 
 </head>
