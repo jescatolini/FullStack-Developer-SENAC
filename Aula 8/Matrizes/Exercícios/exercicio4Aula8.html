@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    var matriz1 = [[2], [2]];
+    var matriz2 = [[2], [2]];
+
+    for (var linha = 0; linha < 2; linha++) {
+      for (var coluna = 0; coluna < 2; coluna++) {
+        matriz1[linha][coluna] = parseInt(prompt("Informe um valor para a matriz 1 na posição [" + linha + "][" + coluna + "]"));
+      }
+    }
+
+    for (var linha = 0; linha < 2; linha++) {
+      for (var coluna = 0; coluna < 2; coluna++) {
+        matriz2[linha][coluna] = parseInt(prompt("Informe um valor para a matriz 2 na posição [" + linha + "][" + coluna + "]"));
+      }
+    }
+
+    var somaMatriz1 = 0;
+    var somaMatriz2 = 0;
+
+    for (var linha = 0; linha < 2; linha++) {
+      for (var coluna = 0; coluna < 2; coluna++) {
+        somaMatriz1 += matriz1[linha][coluna];
+        somaMatriz2 += matriz2[linha][coluna];
+      }
+    }
+
+    if (somaMatriz1 > somaMatriz2) {
+      document.write("A matriz 1 tem a maior soma: " + somaMatriz1 + "<br>");
+    } else if (somaMatriz2 > somaMatriz1) {
+      document.write("A matriz 2 tem a maior soma: " + somaMatriz2 + "<br>");
+    } else {
+      document.write("As duas matrizes têm a mesma soma: " + somaMatriz1 + "<br>");
+    }
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
