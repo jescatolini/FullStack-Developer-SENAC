@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    var matriz = [[4], [4], [4], [4]];
+
+    for (var linha = 0; linha < 4; linha++) {
+      for (var coluna = 0; coluna < 4; coluna++) {
+        matriz[linha][coluna] = parseInt(prompt("Informe um valor para a posição [" + linha + "][" + coluna + "]"));
+      }
+    }
+
+
+    for (var linha = 0; linha < 4; linha++) {
+      var somaLinha = 0;
+      for (var coluna = 0; coluna < 4; coluna++) {
+        somaLinha += matriz[linha][coluna];
+      }
+      document.write("Soma da linha " + linha + ": " + somaLinha + "<br>");
+    }
+
+
+    for (var coluna = 0; coluna < 4; coluna++) {
+      var somaColuna = 0;
+      for (var linha = 0; linha < 4; linha++) {
+        somaColuna += matriz[linha][coluna];
+      }
+      document.write("Soma da coluna " + coluna + ": " + somaColuna + "<br>");
+    }
+
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
