@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script>
+    var matriz = [[4], [4], [4], [4]]; // Inicializando a matriz 4x4
+
+    // Preenchendo a matriz com valores
+    for (var linha = 0; linha < 4; linha++) {
+      for (var coluna = 0; coluna < 4; coluna++) {
+        matriz[linha][coluna] = parseInt(prompt("Informe um valor para a posição [" + linha + "][" + coluna + "]"));
+      }
+    }
+
+    // a) Imprimir todos os elementos da matriz
+    document.write("Matriz completa:<br>");
+    for (var linha = 0; linha < 4; linha++) {
+      for (var coluna = 0; coluna < 4; coluna++) {
+        document.write(matriz[linha][coluna] + " ");
+      }
+      document.write("<br>");
+    }
+
+    // b) Somar os quadrados de todos os elementos da primeira coluna
+    var somaQuadradosColuna1 = 0;
+    for (var linha = 0; linha < 4; linha++) {
+      somaQuadradosColuna1 += matriz[linha][0] ** 2;
+    }
+    document.write("Soma dos quadrados da primeira coluna: " + somaQuadradosColuna1 + "<br>");
+
+    // c) Somar todos os elementos da terceira linha
+    var somaTerceiraLinha = 0;
+    for (var coluna = 0; coluna < 4; coluna++) {
+      somaTerceiraLinha += matriz[2][coluna];
+    }
+    document.write("Soma da terceira linha: " + somaTerceiraLinha + "<br>");
+
+    // d) Somar os elementos da diagonal principal
+    var somaDiagonalPrincipal = 0;
+    for (var i = 0; i < 4; i++) {
+      somaDiagonalPrincipal += matriz[i][i];
+    }
+    document.write("Soma da diagonal principal: " + somaDiagonalPrincipal + "<br>");
+
+    // e) Somar todos os elementos de índice par da segunda linha
+    var somaParesSegundaLinha = 0;
+    for (var coluna = 0; coluna < 4; coluna += 2) {
+      somaParesSegundaLinha += matriz[1][coluna];
+    }
+    document.write("Soma dos elementos de índice par da segunda linha: " + somaParesSegundaLinha + "<br>");
+  </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
